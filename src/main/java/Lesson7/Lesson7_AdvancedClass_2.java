@@ -31,6 +31,7 @@ public class Lesson7_AdvancedClass_2 {
                 new Plate(15),
                 new Plate(20)};
 
+        //Переменная для задачи с одной тарелкой
         Plate bigPlate = new Plate(50);
 
         for (Cat cat: cats){
