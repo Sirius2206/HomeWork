@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Lesson8_Window extends JFrame {
+    private boolean memorize = false;
     private int value;
 
 
@@ -58,7 +59,7 @@ public class Lesson8_Window extends JFrame {
         JButton resetButton = new JButton("RESET");
         resetButton.setFont(font);
 
-        JButton saveButton = new JButton("SAVE");
+        JButton saveButton = new JButton("MEMO");
         saveButton.setFont(font);
 
         JPanel southPanel = new JPanel(new GridLayout(1, 2));
@@ -99,11 +100,20 @@ public class Lesson8_Window extends JFrame {
         });
 
         resetButton.addActionListener(e -> {
+            value = initialValue;
+            counterValueView.setText(String.valueOf(value));
+            memorize = false;
+        });
+
+        saveButton.addActionListener(e -> {
+            if (!memorize) {
+                savedValue[0] = value;
+                memorize = true;
+                return;
+            }
             value = savedValue[0];
             counterValueView.setText(String.valueOf(value));
         });
-
-        saveButton.addActionListener(e -> savedValue[0] = value);
 
         setVisible(true);
     }
